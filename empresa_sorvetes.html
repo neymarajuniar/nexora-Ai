@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nexora AI</title>
+
+    <meta name="description"
+          content="Gelato & Cia - Sorvetes artesanais, cremosos e deliciosos para todos os momentos.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #3303ce;
+            --primary-dark: #8e93ff;
+            --secondary: #3f06e8;
+            --light: #fff5f8;
+            --white: #ffffff;
+            --text: #52606d;
+            --green: #25d366;
+            --shadow: 0 15px 45px rgba(7, 40, 61, .12);
+            --radius: 22px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            color: var(--text);
+            background: var(--white);
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: "Poppins", sans-serif;
+            color: var(--secondary);
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        img {
+            width: 100%;
+            display: block;
+        }
+
+        .container {
+            width: min(1120px, 92%);
+            margin: auto;
+        }
+
+        /* =========================
+           HEADER
+        ========================== */
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255,255,255,.94);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #e9f0f3;
+        }
+
+        .nav {
+            height: 78px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--secondary);
+            font-family: "Poppins";
+            font-size: 1.3rem;
+            font-weight: 800;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 13px;
+            background: linear-gradient(135deg, var(--primary), #55d9ff);
+            color: white;
+            display: grid;
+            place-items: center;
+            font-size: 21px;
+        }
+
+        .menu {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+            list-style: none;
+        }
+
+        .menu a {
+            color: var(--secondary);
+            font-size: .92rem;
+            font-weight: 600;
+            transition: .3s;
+        }
+
+        .menu a:hover {
+            color: var(--primary);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            border: 0;
+            cursor: pointer;
+            padding: 14px 23px;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: .3s;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white !important;
+            box-shadow: 0 10px 25px rgba(99, 68, 237, 0.25);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 27px;
+            border: 0;
+            background: none;
+            cursor: pointer;
+            color: var(--secondary);
+        }
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .hero {
+            min-height: 100vh;
+            padding-top: 78px;
+            display: flex;
+            align-items: center;
+            background:
+                linear-gradient(90deg,
+                rgba(4,27,43,.92) 0%,
+                rgba(4,27,43,.72) 45%,
+                rgba(4,27,43,.18) 100%),
+                url("imagem1.jpg")
+                center/cover;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            color: white;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 8px 15px;
+            border-radius: 50px;
+            background: rgba(255,255,255,.14);
+            border: 1px solid rgba(37, 19, 235, 0.22);
+            color: #d8f8ff;
+            font-size: .85rem;
+            font-weight: 700;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 {
+            color: white;
+            font-size: clamp(2.6rem, 6vw, 5rem);
+            margin-bottom: 22px;
+        }
+
+        .hero h1 span {
+            color: #ffd166;
+        }
+
+        .hero p {
+            max-width: 600px;
+            font-size: 1.1rem;
+            color: #e6f1f5;
+            margin-bottom: 32px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn-outline {
+            border: 1px solid rgba(255,255,255,.5);
+            color: white;
+            background: rgba(255,255,255,.08);
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--secondary);
+        }
+
+        /* =========================
+           STATS
+        ========================== */
+
+        .stats {
+            margin-top: -55px;
+            position: relative;
+            z-index: 3;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            background: white;
+            box-shadow: var(--shadow);
+            border-radius: 20px;
+            padding: 28px;
+        }
+
+        .stat {
+            text-align: center;
+            border-right: 1px solid #e7eef1;
+        }
+
+        .stat:last-child {
+            border-right: 0;
+        }
+
+        .stat strong {
+            display: block;
+            color: var(--primary);
+            font-size: 2rem;
+            font-family: "Poppins";
+        }
+
+        .stat span {
+            font-size: .88rem;
+        }
+
+        /* =========================
+           SECTIONS
+        ========================== */
+
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 55px;
+        }
+
+        .section-title span {
+            color: var(--primary);
+            font-size: .85rem;
+            text-transform: uppercase;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+        }
+
+        .section-title h2 {
+            font-size: clamp(2rem,4vw,3rem);
+            margin: 12px 0 15px;
+        }
+
+        /* =========================
+           SOBRE
+        ========================== */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            height: 520px;
+            object-fit: cover;
+            border-radius: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .experience {
+            position: absolute;
+            right: -25px;
+            bottom: 30px;
+            background: white;
+            padding: 22px;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            width: 180px;
+            text-align: center;
+        }
+
+        .experience strong {
+            display: block;
+            color: var(--primary);
+            font-size: 2rem;
+        }
+
+        .about-text h2 {
+            font-size: 2.7rem;
+            margin: 12px 0 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 18px;
+        }
+
+        .checks {
+            list-style: none;
+            margin: 25px 0;
+        }
+
+        .checks li {
+            margin: 12px 0;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        .checks li::before {
+            content: "✓";
+            display: inline-grid;
+            place-items: center;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: #dff8ff;
+            color: var(--primary);
+            margin-right: 10px;
+        }
+
+        /* =========================
+           SERVIÇOS
+        ========================== */
+
+        .services {
+            background: var(--light);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 25px;
+        }
+
+        .service {
+            background: white;
+            border-radius: var(--radius);
+            padding: 32px;
+            box-shadow: 0 8px 30px rgba(10,50,70,.06);
+            transition: .3s;
+            border: 1px solid #edf4f6;
+        }
+
+        .service:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow);
+        }
+
+        .service-icon {
+            width: 58px;
+            height: 58px;
+            border-radius: 17px;
+            background: #e4f8fd;
+            display: grid;
+            place-items: center;
+            color: var(--primary);
+            font-size: 27px;
+            margin-bottom: 23px;
+        }
+
+        .service h3 {
+            margin-bottom: 12px;
+        }
+
+        .service a {
+            display: inline-block;
+            margin-top: 18px;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* =========================
+           GALERIA
+        ========================== */
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1.2fr .8fr .8fr;
+            grid-auto-rows: 240px;
+            gap: 16px;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .gallery-item:first-child {
+            grid-row: span 2;
+        }
+
+        .gallery-item img {
+            height: 100%;
+            object-fit: cover;
+            transition: .5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.06);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            left: 18px;
+            bottom: 18px;
+            background: rgba(5,25,38,.78);
+            color: white;
+            padding: 9px 15px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: .85rem;
+        }
+
+        /* =========================
+           DIFERENCIAIS
+        ========================== */
+
+        .features {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .features .section-title h2,
+        .features .section-title p {
+            color: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 25px;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 25px;
+        }
+
+        .feature-icon {
+            font-size: 35px;
+            margin-bottom: 17px;
+        }
+
+        .feature h3 {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .feature p {
+            color: #b9cbd4;
+            font-size: .9rem;
+        }
+
+        /* =========================
+           DEPOIMENTOS
+        ========================== */
+
+        .testimonials {
+            background: #f7fbfc;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 25px;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 30px;
+            border-radius: 22px;
+            box-shadow: 0 8px 30px rgba(10,50,70,.06);
+        }
+
+        .stars {
+            color: #0f07ff;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 22px;
+        }
+
+        .client {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: #dff8ff;
+            display: grid;
+            place-items: center;
+            color: var(--primary);
+            font-weight: 800;
+        }
+
+        .client strong {
+            color: var(--secondary);
+        }
+
+        /* =========================
+           CONTATO
+        ========================== */
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: .8fr 1.2fr;
+            gap: 50px;
+        }
+
+        .contact-info h2 {
+            font-size: 2.5rem;
+            margin: 12px 0 18px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 15px;
+            margin: 25px 0;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            min-width: 45px;
+            height: 45px;
+            border-radius: 13px;
+            background: #e5f8fd;
+            color: var(--primary);
+            display: grid;
+            place-items: center;
+        }
+
+        .contact-item strong {
+            color: var(--secondary);
+            display: block;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 35px;
+            border-radius: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            border: 1px solid #dce8ec;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            font-family: inherit;
+            outline: none;
+            transition: .3s;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(255,92,138,.1);
+        }
+
+        textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        /* =========================
+           CTA
+        ========================== */
+
+        .cta {
+            padding: 70px 0;
+            background:
+                linear-gradient(100deg, rgba(40, 11, 231, 0.96), rgba(255,145,77,.94));
+            color: white;
+        }
+
+        .cta-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .cta h2 {
+            color: white;
+            font-size: 2.4rem;
+        }
+
+        .cta p {
+            margin-top: 8px;
+            color: #ddf7ff;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--primary-dark);
+            white-space: nowrap;
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            background: #061725;
+            color: #9bb0bb;
+            padding: 55px 0 25px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 45px;
+        }
+
+        footer .logo {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        footer h3 {
+            color: white;
+            margin-bottom: 18px;
+            font-size: 1rem;
+        }
+
+        footer ul {
+            list-style: none;
+        }
+
+        footer li {
+            margin: 9px 0;
+        }
+
+        footer a {
+            color: #9bb0bb;
+            transition: .3s;
+        }
+
+        footer a:hover {
+            color: #55d9ff;
+        }
+
+        .copyright {
+            padding-top: 22px;
+            border-top: 1px solid rgba(255,255,255,.1);
+            text-align: center;
+            font-size: .85rem;
+        }
+
+        /* =========================
+           WHATSAPP
+        ========================== */
+
+        .whatsapp {
+            position: fixed;
+            right: 22px;
+            bottom: 22px;
+            width: 62px;
+            height: 62px;
+            border-radius: 50%;
+            background: var(--green);
+            color: white;
+            display: grid;
+            place-items: center;
+            font-size: 30px;
+            box-shadow: 0 8px 25px rgba(37,211,102,.35);
+            z-index: 999;
+            transition: .3s;
+        }
+
+        .whatsapp:hover {
+            transform: scale(1.08);
+        }
+
+        /* =========================
+           RESPONSIVO
+        ========================== */
+
+        @media (max-width: 900px) {
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .menu {
+                position: absolute;
+                top: 78px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 25px;
+                gap: 20px;
+                box-shadow: 0 15px 30px rgba(0,0,0,.08);
+                display: none;
+            }
+
+            .menu.active {
+                display: flex;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+            .stat:nth-child(2) {
+                border-right: 0;
+            }
+
+            .stat {
+                margin: 10px 0;
+            }
+
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            section {
+                padding: 75px 0;
+            }
+
+            .hero {
+                min-height: 90vh;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .stats {
+                margin-top: -30px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                padding: 18px;
+            }
+
+            .stat strong {
+                font-size: 1.5rem;
+            }
+
+            .about-image img {
+                height: 380px;
+            }
+
+            .experience {
+                right: 10px;
+            }
+
+            .services-grid,
+            .testimonials-grid,
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                grid-auto-rows: 260px;
+            }
+
+            .gallery-item:first-child {
+                grid-row: auto;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- =========================
+     MENU
+========================== -->
+
+<header>
+    <div class="container nav">
+
+        <a href="#inicio" class="logo">
+            <span class="logo-icon"></span>
+            
+        </a>
+
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+        <ul class="menu" id="menu">
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#servicos"></a></li>
+            <li><a href="#galeria">Galeria</a></li>
+            <li><a href="#depoimentos">O que nossos clientes dizem</a></li>
+            <li><a href="#contato">Contato</a></li>
+            <li>
+                <a class="btn btn-primary"
+                   href="https://wa.me/5546999999999"
+                   target="_blank">
+                    Orçamento
+                </a>
+            </li>
+        </ul>
+
+    </div>
+</header>
+
+
+<!-- =========================
+     HERO
+========================== -->
+
+<section class="hero" id="inicio">
+
+    <div class="container">
+
+        <div class="hero-content">
+
+            <span class="tag">Automatize o presente. Escale o futuro.</span>
+            
+
+            <h1>
+                 Criamos soluções
+                 de automação com Inteligência Artificial para sua empresa economizar tempo, 
+                 reduzir tarefas repetitivas e crescer com mais eficiência.
+                <span>.</span>
+            </h1>
+
+            <p>
+                Menos trabalho manual. Mais produtividade. Mais resultados.
+
+            <div class="hero-buttons">
+
+                <a href="#contato" class="btn btn-primary">
+                    Botões:
+                </a>
+
+                <a href="#servicos" class="btn btn-outline">
+                    Conheça nossas soluções
+                    Solicite um orçamento
+                    Tecnologia inteligente para empresas que querem ir além.
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ESTATÍSTICAS
+========================== -->
+
+<div class="stats">
+
+    <div class="container">
+
+        <div class="stats-grid">
+
+            <div class="stat">
+                <strong>+5mil</strong>
+                <span>Clientes felizes</span>
+            </div>
+
+            
+            <div class="stat">
+                <strong>100%</strong>
+                <span>confiavel</span>
+            </div>
+
+            <div class="stat">
+                <strong>5★</strong>
+                <span>no mercado</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     SOBRE
+========================== -->
+
+<section id="sobre">
+
+    <div class="container">
+
+        <div class="about-grid">
+
+            <div class="about-image">
+
+                <img
+                    src="imagem2.png"
+                    alt="Sorvete artesanal">
+
+                <div class="experience">
+                    <strong>5+</strong>
+                    anos de experiência
+                </div>
+
+            </div>
+
+            <div class="about-text">
+
+                <span class="tag" style="color:#08a6d8;background:#e8f9fd;border:0;">
+                    Sobre nós
+                </span>
+
+                <h2>
+                Inteligência que transforma negócios.
+                </h2>A Nexora AI nasceu com um propósito: ajudar empresas a trabalharem de forma mais inteligente por meio da automação e da Inteligência Artificial.
+                Acreditamos que a tecnologia deve simplificar processos, otimizar recursos e abrir novas oportunidades de crescimento.
+                Desenvolvemos soluções personalizadas para automatizar tarefas, melhorar o atendimento e tornar as operações empresariais mais eficientes.
+
+                <p>
+                    Nossa missão
+                    Simplificar o dia a dia das empresas por meio de soluções tecnológicas inteligentes e acessíveis.
+                    
+                     
+
+                <p>
+                    Nossa visão
+
+                    Ser referência em automação inteligente, ajudando negócios a evoluírem em um mercado cada vez mais digital.
+                </p>
+
+              
+
+                <a href="#contato" class="btn btn-primary">
+                    
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SERVIÇOS
+========================== -->
+
+<section class="services" id="servicos">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span></span>
+
+            <h2>
+                Soluções inteligentes para acelerar seus resultados
+            </h2>
+
+            <p>
+                Desenvolvemos soluções tecnológicas personalizadas para simplificar 
+                tarefas, melhorar a produtividade e ajudar seu negócio a alcançar novos patamares.
+            </p>
+
+        </div>
+
+
+        <div class="services-grid">
+
+            <div class="service">
+                <div class="service-icon"></div>
+
+                <h3></h3>
+
+                <p>
+                    Automação com IA
+                Automatize tarefas repetitivas, reduza processos manuais
+                 e libere tempo para o que realmente importa no seu negócio.
+
+
+                </p>
+
+                <a href="#contato"></a> →</a>
+            </div>
+
+
+            <div class="service">
+                <div class="service-icon"></div>
+
+                <h3></h3>
+
+                <p>
+                    Chatbots inteligentes
+                    Crie experiências de atendimento mais rápidas com assistentes virtuais
+                     que respondem dúvidas e ajudam a organizar o relacionamento com seus clientes.
+
+
+                </p>
+
+                <a href="#contato"> →</a>
+            </div>
+
+
+            <div class="service">
+                <div class="service-icon"></div>
+
+                <h3></h3>
+
+                <p>
+                    Desenvolvimento de soluções digitais
+                    Crie ferramentas, aplicações e experiências digitais sob medida 
+                    para atender às necessidades específicas da sua empresa.
+
+
+                </p>
+
+                <a href="#contato">Ver sabores →</a>
+            </div>
+
+
+            <div class="service">
+                <div class="service-icon"></div>
+
+                <h3></h3>
+
+                <p>
+                    Consultoria em inteligência artificial
+                    Descubra onde a IA pode gerar valor no seu negócio
+                     e desenvolva uma estratégia alinhada aos seus objetivos.
+                </p>
+
+                <a href="#contato">Ver sabores →</a>
+            </div>
+
+
+           
+
+</section>
+
+
+<!-- =========================
+     GALERIA
+========================== -->
+
+<section id="galeria">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span>Tecnologia que ganha vida.</span>
+
+            <h2>
+                
+            </h2>
+
+            <p>
+                Explore possibilidades, conheça soluções e descubra como a
+                 inteligência artificial pode transformar a maneira de trabalhar.
+            </p>
+
+        </div>
+
+
+        <div class="gallery-grid">
+
+            <div class="gallery-item">
+
+                <img
+                    src="imagem.jpg3"
+                    alt="Sorvetes variados">
+
+                <span class="gallery-caption">
+                    
+                </span>
+
+            </div>
+
+
+            <div class="gallery-item">
+
+                <img
+                    src="imagem.jpg4"
+                    alt="Picolés">
+
+                <span class="gallery-caption">
+                
+                </span>
+
+            </div>
+
+
+            <div class="gallery-item">
+
+                <img
+                    src="image.jpg5"
+                    alt="Milk-shake">
+
+                <span class="gallery-caption">
+                
+                </span>
+
+            </div>
+
+
+            <div class="gallery-item">
+
+                <img
+                    src="imagem.jpg6"
+                    alt="Ingredientes selecionados">
+
+                <span class="gallery-caption">
+                    
+                </span>
+
+            </div>
+
+
+            <div class="gallery-item">
+
+                <img
+                    src="imagem.jpg7"
+                    alt="Atendimento da loja">
+
+                <span class="gallery-caption">
+                    
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     DIFERENCIAIS
+========================== -->
+
+<section class="features">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span>Por que escolher a Nexora IA?</span>
+
+            <h2>Acreditamos que a tecnologia deve tornar o complexo
+                 mais simples e as oportunidades mais acessíveis.</h2>
+
+            <p>
+                Inovação estratégica: soluções pensadas para resolver
+                 problemas reais, não apenas para seguir tendências. 
+
+        </div>
+
+
+        <div class="features-grid">
+
+            <div class="feature">
+                <div class="feature-icon">🛡️</div>
+                <h3></h3>
+                <p>Personalização: cada projeto considera os 
+                    objetivos e as necessidades do negócio..</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">⏰</div>
+                <h3></h3>
+                <p>Eficiência operacional: mais oportunidades para reduzir
+                     tarefas manuais e otimizar processos..</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">💎</div>
+                <h3></h3>
+                <p>Tecnologia escalável: soluções planejadas para acompanhar a evolução da empresa.</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">💬</div>
+                <h3></h3>
+                <p>Parceria próxima: trabalhamos para compreender seus desafios e construir soluções adequadas à sua realidade.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     DEPOIMENTOS
+========================== -->
+
+<section class="testimonials" id="depoimentos">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span>O que nossos clientes dizem</span>
+
+            <h2>O que nossos clientes dizem</h2>
+
+            <p>
+                Quem prova, recomenda!
+            </p>
+
+        </div>
+
+
+        <div class="testimonials-grid">
+
+            <div class="testimonial">
+
+                <div class="stars">★★★★★</div>
+
+                <p>
+                    "O serviço foi excelente. A equipe chegou no horário,
+                    foi muito cuidadosa e deixou minha casa impecável."
+                </p>
+
+                <div class="client">
+                    <div class="avatar">M</div>
+                    <div>
+                        <strong>Mariana S.</strong>
+                        <small>Cliente residencial</small>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="testimonial">
+
+                <div class="stars">★★★★★</div>
+
+                <p>
+                    “A tecnologia tem o potencial de simplificar nossa rotina e abrir novas oportunidades. 
+                    Estamos sempre em busca de soluções que tornem nossos processos mais eficientes.” 
+                </p>
+
+                <div class="client">
+                    <div class="avatar">R</div>
+                    <div>
+                        <strong>Rafael A.</strong>
+                        <small>Cliente empresarial</small>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="testimonial">
+
+                <div class="stars">★★★★★</div>
+
+                <p>
+                    "Excelente atendimento e muita atenção aos detalhes.
+                    Com certeza vou contratar novamente."
+                </p>
+
+                <div class="client">
+                    <div class="avatar">C</div>
+                    <div>
+                        <strong>Camila P.</strong>
+                        <small>Cliente residencial</small>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CTA
+========================== -->
+
+<section class="cta">
+
+    <div class="container">
+
+        <div class="cta-content">
+
+            <div>
+                <h2>Pronto para experimentar?</h2>
+
+                <p>
+                    SEU PRÓXIMO PASSO
+
+                    Sua empresa está pronta para evoluir?
+                    Vamos descobrir como a inteligência artificial pode simplificar seus processos, impulsionar sua produtividade e abrir novas possibilidades para o seu negócio.
+                    Vamos conversar sobre seu projeto →
+                    O futuro não precisa esperar. Comece a construir o próximo passo hoje.
+                </p>
+            </div>
+
+            <a
+                href="https://wa.me/5546999999999"
+                target="_blank"
+                class="btn btn-white">
+
+                 Pedir pelo WhatsApp
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CONTATO
+========================== -->
+
+<section id="contato">
+
+    <div class="container">
+
+        <div class="contact-grid">
+
+            <div class="contact-info">
+
+                <span class="tag"
+                      style="color:#08a6d8;background:#e8f9fd;border:0;">
+                    Contato
+                </span>
+
+                <h2>
+                    
+                </h2>
+
+                <p>
+                    Preencha o formulário ou fale diretamente conosco.
+                    Nossa loja responderá o mais breve possível.
+                </p>
+
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">📱</div>
+
+                    <div>
+                        <strong>WhatsApp</strong>
+                        (46) 99999-9999
+                    </div>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">✉️</div>
+
+                    <div>
+                        <strong>E-mail</strong>
+                        contato@nexoraia.com.br
+                    </div>
+
+                </div>
+
+
+                <div class="contact-item">
+
+                    <div class="contact-icon">📍</div>
+
+                    <div>
+                        <strong>Carinho</strong>
+                        Sua cidade e região
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <form class="contact-form" id="formContato">
+
+                <h3 style="font-size:1.5rem;margin-bottom:20px;">
+                    
+                </h3>
+
+                <div class="form-row">
+
+                    <input
+                        type="text"
+                        placeholder="Seu nome"
+                        required>
+
+                    <input
+                        type="tel"
+                        placeholder="Seu telefone"
+                        required>
+
+                </div>
+
+
+                <input
+                    type="email"
+                    placeholder="Seu e-mail">
+
+
+                <select required>
+
+                </select>
+
+
+                <textarea
+                    placeholder="Conte quais sabores ou produtos você gostaria de pedir..."></textarea>
+
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                    style="width:100%;">
+
+                    Solicitar orçamento
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     WHATSAPP
+========================== -->
+
+<a
+    class="whatsapp"
+    href="https://wa.me/5546999999999"
+    target="_blank"
+    aria-label="Falar no WhatsApp">
+
+    
+
+</a>
+
+
+<script>
+
+    /* MENU MOBILE */
+
+    function toggleMenu() {
+
+        document
+            .getElementById("menu")
+            .classList
+            .toggle("active");
+
+    }
+
+
+    /* FECHAR MENU AO CLICAR */
+
+    document
+        .querySelectorAll(".menu a")
+        .forEach(link => {
+
+            link.addEventListener("click", () => {
+
+                document
+                    .getElementById("menu")
+                    .classList
+                    .remove("active");
+
+            });
+
+        });
+
+
+    /* FORMULÁRIO */
+
+    document
+        .getElementById("formContato")
+        .addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            alert(
+                "Obrigado pelo contato! " +
+                "Sua solicitação de orçamento foi recebida."
+            );
+
+            this.reset();
+
+        });
+
+</script>
+
+</body>
+</html>
